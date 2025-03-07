@@ -7,33 +7,95 @@
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container">
-      <form class="trivia-picker-container">
+    <section id="trivia-picker-container">
+      <form class="trivia-picker-form">
         <p class="trivia-picker-text">Choose what trivia you want to do!</p>
         <input
           type="button"
           class="btn"
-          href="#general-knowledge"
+          onclick="window.location.href='#general-knowledge-container'"
           value="General Knowledge"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#general-knowledge'"
+          onclick="window.location.href='#history-container'"
           value="History"
         />
-        <input type="button" class="btn" href="#geography" value="Geography" />
-        <input type="button" class="btn" href="#bible" value="Bible" />
-        <input type="button" class="btn" href="#tv" value="TV" />
-        <input type="button" class="btn" href="#movie" value="Movie" />
+        <input
+          type="button"
+          class="btn"
+          onclick="window.location.href='#geography-container'"
+          value="Geography"
+        />
+        <input
+          type="button"
+          class="btn"
+          onclick="window.location.href='#bible-container'"
+          value="Bible"
+        />
+        <input
+          type="button"
+          class="btn"
+          onclick="window.location.href='#tv-container'"
+          value="TV"
+        />
+        <input
+          type="button"
+          class="btn"
+          onclick="window.location.href='#movie-container'"
+          value="Movie"
+        />
       </form>
-    </div>
-    <div id="general-knowledge-container">General Knowledge</div>
-    <div id="history-container"></div>
-    <div id="geography-container"></div>
-    <div id="bible-container"></div>
-    <div id="tv-container"></div>
-    <div id="movie-container"></div>
+    </section>
+    <section id="general-knowledge-container" hidden>
+      <form class="general-knowledge-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
+    <section id="history-container" hidden>
+      <form class="history-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
+    <section id="geography-container" hidden>
+      <form class="geography-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
+    <section id="bible-container" hidden>
+      <form class="bible-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
+    <section id="tv-container" hidden>
+      <form class="tv-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
+    <section id="movie-container" hidden>
+      <form class="movie-form">
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+        <input type="button" class="btn" />
+      </form>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>
