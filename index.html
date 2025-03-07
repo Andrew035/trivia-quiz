@@ -13,88 +13,58 @@
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#general-knowledge-container'"
+          onclick="window.location.href='#general-knowledge-container'; getGeneralKnowledge();"
           value="General Knowledge"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#history-container'"
+          onclick="window.location.href='#history-container'; getHistory();"
           value="History"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#geography-container'"
+          onclick="window.location.href='#geography-container'; getGeography();"
           value="Geography"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#bible-container'"
+          onclick="window.location.href='#bible-container'; getBible();"
           value="Bible"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#tv-container'"
+          onclick="window.location.href='#tv-container'; getTV();"
           value="TV"
         />
         <input
           type="button"
           class="btn"
-          onclick="window.location.href='#movie-container'"
+          onclick="window.location.href='#movie-container'; getMovie();"
           value="Movie"
         />
       </form>
     </section>
-    <section id="general-knowledge-container" hidden>
-      <form class="general-knowledge-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="general-knowledge-container">
+      <form id="general-knowledge-form"></form>
     </section>
-    <section id="history-container" hidden>
-      <form class="history-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="history-container">
+      <form id="history-form"></form>
     </section>
-    <section id="geography-container" hidden>
-      <form class="geography-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="geography-container">
+      <form id="geography-form"></form>
     </section>
-    <section id="bible-container" hidden>
-      <form class="bible-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="bible-container">
+      <form id="bible-form"></form>
     </section>
-    <section id="tv-container" hidden>
-      <form class="tv-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="tv-container">
+      <form id="tv-form"></form>
     </section>
-    <section id="movie-container" hidden>
-      <form class="movie-form">
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-        <input type="button" class="btn" />
-      </form>
+    <section id="movie-container">
+      <form id="movie-form"></form>
     </section>
     <script src="app.js"></script>
   </body>

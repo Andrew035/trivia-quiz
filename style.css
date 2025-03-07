@@ -4,3 +4,12 @@
   --border: #be3144;
   --color: #e17564;
 }
+
+#general-knowledge-container,
+#history-container,
+#geography-container,
+#bible-container,
+#tv-container,
+#movie-container {
+  display: none;
+}
