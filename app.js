@@ -35,11 +35,17 @@ let gkCorrectAnswers = {
   answer5: "Paris",
 };
 
-function isCorrectGK(currQuestion, val) {
-  const elem = document.getElementById("gkbtn");
-}
+// NOTES: Work on isCorrectGK function
 
-// Note: Fix for loop and find out where size of 7 is coming from
+function isCorrectGK(currQuestion) {
+  let i = 0;
+  while (true) {
+    document.getElementById("gkbtn").addEventListener("click", () => {
+      console.log(document.getElementById("gkbtn")[i]);
+    });
+    i++;
+  }
+}
 
 function getGeneralKnowledge() {
   document.getElementById("trivia-picker-container").style.display = "none";
@@ -51,11 +57,11 @@ function getGeneralKnowledge() {
     let input = document.createElement("input");
     input.type = "button";
     input.className = "btn";
-    input.value = Object.values(posGkAnswers)[currQuestion][i];
     input.id = "gkbtn";
+    input.value = Object.values(posGkAnswers)[currQuestion][i];
     gk.append(input);
-    isCorrectGK(currQuestion, input.value);
   }
+  isCorrectGK(currQuestion);
 }
 
 function getHistory() {
