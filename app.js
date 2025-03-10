@@ -1,3 +1,5 @@
+const ANSWERS = 4;
+
 let gk = document.getElementById("general-knowledge-form");
 let history = document.getElementById("history-form");
 let geography = document.getElementById("geography-form");
@@ -33,51 +35,8 @@ let gkCorrectAnswers = {
   answer5: "Paris",
 };
 
-function isCorrectGK(currQuestion) {
+function isCorrectGK(currQuestion, val) {
   const elem = document.getElementById("gkbtn");
-  const val = elem.id;
-
-  if (currQuestion == 1) {
-    if (val === gkCorrectAnswers.answer1) {
-      return true;
-    } else {
-      elem.style.backgroundColor = "#f00";
-      elem.style.color = "#000";
-      return false;
-    }
-  } else if (currQuestion == 2) {
-    if (val === gkCorrectAnswers.answer2) {
-      return true;
-    } else {
-      elem.style.backgroundColor = "#f00";
-      elem.style.color = "#000";
-      return false;
-    }
-  } else if (currQuestion == 3) {
-    if (val === gkCorrectAnswers.answer3) {
-      return true;
-    } else {
-      elem.style.backgroundColor = "#f00";
-      elem.style.color = "#000";
-      return false;
-    }
-  } else if (currQuestion == 4) {
-    if (val === gkCorrectAnswers.answer4) {
-      return true;
-    } else {
-      elem.style.backgroundColor = "#f00";
-      elem.style.color = "#000";
-      return false;
-    }
-  } else if (currQuestion == 5) {
-    if (val === gkCorrectAnswers.answer5) {
-      return true;
-    } else {
-      elem.style.backgroundColor = "#f00";
-      elem.style.color = "#000";
-      return false;
-    }
-  }
 }
 
 // Note: Fix for loop and find out where size of 7 is coming from
@@ -88,17 +47,14 @@ function getGeneralKnowledge() {
     "block";
 
   let currQuestion = 0;
-  console.log(Object.keys(posGkAnswers)[currQuestion]);
-  for (let i = 0; i < Object.keys(posGkAnswers).length; i++) {
-    console.log(Object.keys(posGkAnswers)[currQuestion][i]);
-  }
-  for (let i = 0; i < Object.keys(posGkAnswers)[currQuestion].length - 3; i++) {
+  for (let i = 0; i < ANSWERS; i++) {
     let input = document.createElement("input");
     input.type = "button";
     input.className = "btn";
     input.value = Object.values(posGkAnswers)[currQuestion][i];
     input.id = "gkbtn";
     gk.append(input);
+    isCorrectGK(currQuestion, input.value);
   }
 }
 
