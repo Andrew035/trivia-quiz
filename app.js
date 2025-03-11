@@ -7,6 +7,7 @@ let bible = document.getElementById("bible-form");
 let tv = document.getElementById("tv-form");
 let movie = document.getElementById("movie-form");
 
+let currQuestion = 0;
 let questions = ["temp", "temp", "temp", "temp"];
 let gkQuestions = {
   question1: "What is the largest ocean on Earth?",
@@ -38,30 +39,84 @@ let gkCorrectAnswers = {
 // NOTES: Work on isCorrectGK function
 
 function isCorrectGK(currQuestion) {
-  let i = 0;
-  while (true) {
-    document.getElementById("gkbtn").addEventListener("click", () => {
-      console.log(document.getElementById("gkbtn")[i]);
+  if (currQuestion === 0) {
+    gk.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn")) {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === gkCorrectAnswers.answer1) {
+          alert("Correct");
+          return true;
+        }
+      }
     });
-    i++;
+  } else if (currQuestion === 1) {
+    gk.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn")) {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === gkCorrectAnswers.answer2) {
+          alert("Correct");
+          return true;
+        }
+      }
+    });
+  } else if (currQuestion === 2) {
+    gk.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn")) {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === gkCorrectAnswers.answer3) {
+          alert("Correct");
+          return true;
+        }
+      }
+    });
+  } else if (currQuestion === 3) {
+    gk.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn")) {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === gkCorrectAnswers.answer4) {
+          alert("Correct");
+          return true;
+        }
+      }
+    });
+  } else if (currQuestion === 4) {
+    gk.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn")) {
+        const selectedValue = event.target.value;
+
+        if (selectedValue === gkCorrectAnswers.answer5) {
+          alert("Correct");
+          return true;
+        }
+      }
+    });
   }
 }
-
+// NOTE: add p element for gk
 function getGeneralKnowledge() {
-  document.getElementById("trivia-picker-container").style.display = "none";
-  document.getElementById("general-knowledge-container").style.display =
-    "block";
+  if (Object.values(posGkAnswers)[currQuestion] === null) {
+    return;
+  } else {
+    document.getElementById("trivia-picker-container").style.display = "none";
+    document.getElementById("general-knowledge-container").style.display =
+      "block";
 
-  let currQuestion = 0;
-  for (let i = 0; i < ANSWERS; i++) {
-    let input = document.createElement("input");
-    input.type = "button";
-    input.className = "btn";
-    input.id = "gkbtn";
-    input.value = Object.values(posGkAnswers)[currQuestion][i];
-    gk.append(input);
+    for (let i = 0; i < ANSWERS; i++) {
+      let input = document.createElement("input");
+      input.type = "button";
+      input.className = "btn";
+      input.id = "gkbtn";
+      input.value = Object.values(posGkAnswers)[currQuestion][i];
+      gk.append(input);
+    }
+    isCorrectGK(currQuestion);
+    currQuestion++;
+    getGeneralKnowledge();
   }
-  isCorrectGK(currQuestion);
 }
 
 function getHistory() {
