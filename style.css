@@ -1,15 +1,50 @@
-:root {
-  --background: #09122c;
-  --buttons: #872341;
-  --border: #be3144;
-  --color: #e17564;
+/*:root {*/
+/*  --background: #09122c;*/
+/*  --buttons: #872341;*/
+/*  --border: #be3144;*/
+/*  --color: #e17564;*/
+/*}*/
+/**/
+/*#general-knowledge-container,*/
+/*#history-container,*/
+/*#geography-container,*/
+/*#bible-container,*/
+/*#tv-container,*/
+/*#movie-container {*/
+/*  display: none;*/
+/*}*/
+
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-#general-knowledge-container,
-#history-container,
-#geography-container,
-#bible-container,
-#tv-container,
-#movie-container {
-  display: none;
+.question-block {
+  margin-bottom: 20px;
+}
+
+.question {
+  font-weight: bold;
+}
+
+.answer {
+  display: block;
+  margin: 5px 0;
+}
+
+.btn-submit {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.score {
+  margin-top: 15px;
+  font-size: 1.2rem;
 }

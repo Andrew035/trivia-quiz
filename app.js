@@ -1,67 +1,107 @@
-const API_URL =
-  "https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple";
-const gkForm = document.getElementById("general-knowledge-form");
-let currentGKQuestion = 0;
-let gkData = [];
-
-// Helper: Shuffle an array
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+// Utility function to decode HTML entities from API
+function decodeHTML(html) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
 }
 
-// Load and show questions
-async function getGeneralKnowledge() {
+// Generic function to fetch and display questions
+async function getTriviaQuestions(categoryId, formId) {
+  const url = `https://opentdb.com/api.php?amount=5&category=${categoryId}&type=multiple`;
+  const form = document.getElementById(formId);
+
   try {
-    // Fetch once
-    if (gkData.length === 0) {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      gkData = data.results;
-    }
+    const res = await fetch(url);
+    const data = await res.json();
+    const questions = data.results;
 
-    if (currentGKQuestion >= gkData.length) {
-      alert("All questions asnwerd. NICE!");
-      return;
-    }
+    form.innerHTML = ""; // Clear previous questions
 
-    // Hide picker, show trivia container
-    document.getElementById("trivia-picker-container").style.display = "none";
-    document.getElementById("general-knowledge-container").style.display =
-      "block";
+    questions.forEach((questionData, index) => {
+      const allAnswers = [
+        ...questionData.incorrect_answers,
+        questionData.correct_answer,
+      ];
+      // Shuffle answers
+      allAnswers.sort(() => Math.random() - 0.5);
 
-    gkForm.innerHTML = ""; // Clear old question
+      const questionBlock = document.createElement("div");
+      questionBlock.className = "question-block";
+      questionBlock.innerHTML = `
+        <p class="question">${index + 1}. ${decodeHTML(questionData.question)}</p>
+        ${allAnswers
+          .map(
+            (answer) => `
+          <label class="answer">
+            <input type="radio" name="question-${index}" value="${decodeHTML(answer)}">
+            ${decodeHTML(answer)}
+          </label>
+        `,
+          )
+          .join("")}
+        <hr/>
+      `;
 
-    // Get current question data
-    const qData = gkData[currentGKQuestion];
-    const allAnswers = shuffle([
-      ...qData.incorrect_answers,
-      qData.correct_answer,
-    ]);
-
-    // Create and insert question
-    const questionP = document.createElement("p");
-    questionP.innerHTML = decodeURIComponent(qData.question);
-    gkForm.appendChild(questionP);
-
-    // Create answer buttons
-    allAnswers.forEach((answer) => {
-      const btn = document.createElement("input");
-      btn.type = "button";
-      btn.className = "btn";
-      btn.value = decodeURIComponent(answer);
-      btn.onclick = () => {
-        if (answer === qData.correct_answer) {
-          alert("Correct!");
-        } else {
-          alert(`Wrong! The correct answer was: ${qData.correct_answer}`);
-        }
-        currentGKQuestion++;
-        getGeneralKnowledge(); // Move to next question
-      };
-      gkForm.appendChild(btn);
+      form.appendChild(questionBlock);
     });
+
+    // Add a Submit button at the end of the form
+    const submitBtn = document.createElement("button");
+    submitBtn.textContent = "Submit Answers";
+    submitBtn.className = "btn-submit";
+    submitBtn.type = "button";
+    submitBtn.addEventListener("click", () => checkAnswers(questions, formId));
+    form.appendChild(submitBtn);
   } catch (error) {
-    console.error("Failed to load trivia:", error);
-    alert("Oops! Could not load trivia questions.");
+    console.error("Error fetching trivia:", error);
+    form.innerHTML = "<p>Failed to load questions. Please try again later.</p>";
   }
+}
+
+// Functions for each category
+function getGeneralKnowledge() {
+  getTriviaQuestions(9, "general-knowledge-form");
+}
+
+function getHistory() {
+  getTriviaQuestions(23, "history-form");
+}
+
+function getGeography() {
+  getTriviaQuestions(22, "geography-form");
+}
+
+function getBible() {
+  getTriviaQuestions(20, "geography-form");
+}
+
+function getTV() {
+  getTriviaQuestions(14, "geography-form");
+}
+
+function getMovie() {
+  getTriviaQuestions(11, "geography-form");
+}
+
+// Check submitted answers
+function checkAnswers(questions, formId) {
+  const form = document.getElementById(formId);
+  let score = 0;
+
+  questions.forEach((q, index) => {
+    const selected = form.querySelector(
+      `input[name="question${index}"]:checked`,
+    );
+    const selectedAnswer = selected ? selected.value : null;
+    const correctAnswer = decodeHTML(q.correct_answer);
+
+    if (selectedAnswer === correctAnswer) {
+      score++;
+    }
+  });
+
+  const result = document.createElement("p");
+  result.className = "score";
+  result.innerHTML = `<strong>You scored ${score} out of ${questions.length}</strong>`;
+  form.appendChild(result);
 }
