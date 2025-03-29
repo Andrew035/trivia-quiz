@@ -71,11 +71,37 @@ function checkAnswers(questions) {
     }
   });
 
+  // Remove any previous score element
+  const existingScore = form.querySelector(".score");
+  if (existingScore) {
+    existingScore.remove();
+  }
+
+  // Create and append new score
   const result = document.createElement("p");
   result.className = "score";
   result.innerHTML = `🎉 You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>`;
   form.appendChild(result);
+
+  // Show modal if perfect score
+  if (score === questions.length) {
+    document.getElementById("congrats-modal").classList.remove("hidden");
+  } else {
+    // Clear all selected answers
+    questions.forEach((_, index) => {
+      const inputs = form.querySelectorAll(`input[name="question-${index}"]`);
+      inputs.forEach((input) => {
+        input.checked = false;
+      });
+    });
+  }
 }
+
+// Show new questions after clicking "Awesome!"
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("congrats-modal").classList.add("hidden");
+  getRandomTrivia();
+});
 
 // Set up button listener
 document.getElementById("start-btn").addEventListener("click", getRandomTrivia);

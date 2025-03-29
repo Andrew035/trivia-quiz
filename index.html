@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title></title>
+    <title>Trivia Quiz</title>
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
@@ -11,6 +11,14 @@
       <h1>Trivia Quiz</h1>
       <button id="start-btn" class="btn">Generate Questions</button>
       <form id="quiz-form"></form>
+    </div>
+
+    <div id="congrats-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>🎉 Congradulations! 🎉</h2>
+        <p>You got a perfect score!</p>
+        <button id="close-modal" class="btn">Awesome!</button>
+      </div>
     </div>
 
     <script src="app.js"></script>
