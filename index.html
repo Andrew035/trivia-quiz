@@ -7,65 +7,12 @@
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <section id="trivia-picker-container">
-      <form class="trivia-picker-form">
-        <p class="trivia-picker-text">Choose what trivia you want to do!</p>
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#general-knowledge-container'; getGeneralKnowledge();"
-          value="General Knowledge"
-        />
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#history-container'; getHistory();"
-          value="History"
-        />
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#geography-container'; getGeography();"
-          value="Geography"
-        />
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#bible-container'; getBible();"
-          value="Bible"
-        />
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#tv-container'; getTV();"
-          value="TV"
-        />
-        <input
-          type="button"
-          class="btn"
-          onclick="window.location.href='#movie-container'; getMovie();"
-          value="Movie"
-        />
-      </form>
-    </section>
-    <section id="general-knowledge-container">
-      <form id="general-knowledge-form"></form>
-    </section>
-    <section id="history-container">
-      <form id="history-form"></form>
-    </section>
-    <section id="geography-container">
-      <form id="geography-form"></form>
-    </section>
-    <section id="bible-container">
-      <form id="bible-form"></form>
-    </section>
-    <section id="tv-container">
-      <form id="tv-form"></form>
-    </section>
-    <section id="movie-container">
-      <form id="movie-form"></form>
-    </section>
+    <div class="container">
+      <h1>Trivia Quiz</h1>
+      <button id="start-btn" class="btn">Generate Questions</button>
+      <form id="quiz-form"></form>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
